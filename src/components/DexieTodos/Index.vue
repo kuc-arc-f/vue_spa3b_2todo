@@ -46,12 +46,14 @@
         <div class="page_info_wrap">
             <ul>
                 <li>このページの機能は、オープンソースで公開しております。<br />
-                    <a  href=' '>
+                    <a  href='https://github.com/kuc-arc-f/vue_spa3b_2todo'>
+                        https://github.com/kuc-arc-f/vue_spa3b_2todo
                     </a><br />
                     <br />
                 </li>
                 <li>関連ブログ:<br />
-                    <a  href=' '>
+                    <a  href='https://knaka0209.hatenablog.com/entry/indexed_db_2todo'>
+                        https://knaka0209.hatenablog.com/entry/indexed_db_2todo
                     </a><br />
                 </li>
             </ul>
