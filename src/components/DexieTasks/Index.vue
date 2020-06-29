@@ -1,9 +1,27 @@
 <template>
     <div class="task_index_wrap">
         <FlashMessage></FlashMessage>
-        <h3>IndexTasks</h3>
-        <hr class="mt-2 mb-2" />
-        <router-link :to="'/dexie_tasks/new/'" class="btn btn-primary">Create</router-link>
+        <div class="row" style="margin-top: 10px;">
+            <div class="col-sm-4"><h3>Tasks</h3>
+            </div>
+            <div class="col-sm-4">
+                <router-link :to="'/dexie_tasks/new/'" class="btn btn-primary">Create
+                </router-link>
+            </div>
+            <div class="col-sm-4" style="text-align: right;">
+                <a id="download" href="" download="tasks.json" class="btn btn-outline-primary btn-sm"
+                v-on:click="export_task()">Export
+                </a>                
+                &nbsp;&nbsp;
+                <!--
+                <router-link :to="'/dexie_tasks/import'" class="btn btn-outline-primary btn-sm">Import
+                </router-link>
+                -->
+                <a href="" v-on:click="move_action('/dexie_tasks/import');"
+                    class="btn btn-outline-primary btn-sm">Import
+                </a>                 
+            </div>
+        </div>
         <hr class="mt-2 mb-2" />
         <br />
         <ul v-for="task in tasks" v-bind:key="task.id">
@@ -66,7 +84,7 @@ export default {
     data () {
         return {
             tasks: [],
-            key_name : "tasks",
+            items_org: [],
         }
     },
     methods: {
@@ -76,7 +94,28 @@ export default {
                 self.tasks = LibDexie.get_reverse_items(items)
                 //console.log( items )
             });
-        },        
+            db.tasks.toArray().then(function ( data ) {
+                self.items_org = data
+            });            
+        },
+        export_task: function(){
+//console.log(this.items_org )
+            var content = JSON.stringify( this.items_org );
+            var blob = new Blob([ content ], { "type" : "application/json" });
+            var fname = "tasks.json"
+            if (window.navigator.msSaveBlob) { 
+                console.log("#-msSaveBlob")
+                window.navigator.msSaveBlob(blob, fname ); 
+                window.navigator.msSaveOrOpenBlob(blob, fname ); 
+            } else {
+                console.log("#-msSaveBlob-false")
+                document.getElementById("download").href = window.URL.createObjectURL(blob);
+            }            
+        },
+        move_action: function( action  ){
+            this.set_exStorage(this.sysConst.KEY_NEXT_ACTION , action )
+            window.location.href = this.sysConst.HTTP_URL
+        },                
     }
 }
 </script>

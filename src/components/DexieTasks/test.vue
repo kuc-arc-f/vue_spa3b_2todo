@@ -3,6 +3,8 @@
         <h1>DoxieTasks- test:</h1>
         <hr />
         data : {{ data1 }}
+        <hr />
+        <button v-on:click="test1()">[ test1 ]</button>
 
     </div>
 </template>
@@ -11,16 +13,22 @@
 import {Mixin} from '../../mixin'
 import Dexie from 'dexie';
 
-var db = new Dexie("friend_database");
+var db = null;
+//var db = new Dexie("friend_database");
 //
 export default {
     mixins:[Mixin],
     created() {
-          db.version(1).stores({
+        db = new Dexie( this.sysConst.DEXIE_DB_NAME );
+        db.version(this.sysConst.DEXIE_DB_VERSION).stores(
+        this.sysConst.DEXIE_DB_STORE );               
+        /*
+         db.version(1).stores({
               friends: 'name,shoeSize'
           });
-          this.add_item()
-          this.get_items()
+        */
+//          this.add_item()
+//          this.get_items()
     },
     data() {
         return {
@@ -31,10 +39,15 @@ export default {
         }
     },
     methods: {
+        test1(){
+//             db.tasks.clear()
+//            var date = new Date("2020-06-29T00:31:52.546Z");
+//            console.log("# test1" + date)
+        },
         getTasks(){
         },
+        /*
         add_item(){
-            // name: "Nicolas", shoeSize: 8p
             db.friends.add({
                 name: "Nicolas", 
                 shoeSize: 8,
@@ -45,6 +58,7 @@ export default {
             });
 
         },
+        */
         get_items(){
             db.friends
                 .toArray()

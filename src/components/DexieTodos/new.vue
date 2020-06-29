@@ -13,8 +13,8 @@
             </div>
             <div class="form-group">
                 <label for="TopicContent">Content :</label>
-                <div class="col-sm-6">
-                    <textarea class="form-control" id="content" rows="3"
+                <div class="col-sm-10">
+                    <textarea class="form-control" id="content" rows="10"
                      v-model="content"></textarea>
                 </div>
             </div>

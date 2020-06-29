@@ -4,26 +4,6 @@ import Router from 'vue-router'
 import home from '../components/Home'
 import about from '../components/About'
 
-import tasksIndex from '../components/Tasks/Index'
-import tasksNew from '../components/Tasks/new'
-import tasksTest from '../components/Tasks/test'
-import tasksShow from '../components/Tasks/show'
-import tasksEdit from '../components/Tasks/edit'
-import tasksTestChild from '../components/Tasks/test_child'
-import tasksTestVuex from '../components/Tasks/test_vuex'
-
-/* index-tasks */
-//import indexTasksTest from '../components/IndexTasks/test_db'
-//import indexTasksTest2 from '../components/IndexTasks/test_db2'
-//import indexTasksTest3 from '../components/IndexTasks/test_db3'
-//import indexTasksTest4 from '../components/IndexTasks/test_db4'
-/*
-import indexTasks from '../components/IndexTasks/Index'
-import indexTasksNew from '../components/IndexTasks/new'
-import indexTasksShow from '../components/IndexTasks/show'
-import indexTasksEdit from '../components/IndexTasks/edit'
-*/
-
 /* dexie */
 import DexieTasksTest from '../components/DexieTasks/test'
 import DexieTasksTest2 from '../components/DexieTasks/test2'
@@ -38,6 +18,8 @@ import DexieTodos from '../components/DexieTodos/Index'
 import DexieTodosNew from '../components/DexieTodos/new'
 import DexieTodosShow from '../components/DexieTodos/show'
 import DexieTodosEdit from '../components/DexieTodos/edit'
+import DexieTodosImport from '../components/DexieTodos/import_todo'
+
 //
 Vue.use(Router)
 //
@@ -68,6 +50,7 @@ export default new Router({
 		{ path: '/dexie_todos/new', component: DexieTodosNew },
 		{ path: '/dexie_todos/show/:id', component: DexieTodosShow },
 		{ path: '/dexie_todos/edit/:id', component: DexieTodosEdit },
+		{ path: '/dexie_todos/import', component: DexieTodosImport },
 
 	] 
 })

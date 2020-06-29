@@ -16,17 +16,13 @@ export const Mixin =  {
                 KEY_CHAT_JOIN_ITEMS : 'key_chat_join_items',
                 INDEX_DB_NAME : 'test_idx_db4',
                 DEXIE_DB_NAME : 'test_idx_db6',
-                DEXIE_DB_VERSION : 2,
+                DEXIE_DB_VERSION : 3,
                 DEXIE_DB_STORE : {
                     person: '++id, name, age',
                     tasks: '++id, title, content ,created_at',                    
-                    todos: '++id, title, content , complete, created_at',                    
-                },                
-                messagingSenderId: ' ',
-                FCM_PublicVapidKey : " ",
-                FCM_SERVER_KEY : " ",
-                URL_BASE : 'http://localhost:8000',
-                HTTP_URL : 'http://localhost:8080',
+                    todos: '++id, title, content , complete, created_at', 
+                    file_items: '++id, name, created_at',                   
+                },
             }
         },
         /* local storage */
